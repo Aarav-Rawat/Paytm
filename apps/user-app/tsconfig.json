@@ -1,11 +1,11 @@
 {
   "extends": "@repo/typescript-config/nextjs.json",
   "compilerOptions": {
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ]
+    "jsx": "react-jsx", // For React
+    "module": "ESNext", // Optional, if needed
+    "target": "ESNext", // Optional, adjust according to your needs
+    "strict": true, // Optional, to enable strict mode
+    "esModuleInterop": true, // Optional, if you use ES module imports
   },
   "include": [
     "**/*.ts",
