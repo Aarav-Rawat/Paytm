@@ -8,6 +8,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.49",
     "prettier": "^3.2.5",
