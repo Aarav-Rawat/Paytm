@@ -1,4 +1,50 @@
-export default async function() {
+import { PrismaClient } from "@prisma/client"
+import { getServerSession } from "next-auth";
+import { authOptions } from "../../lib/auth";
+const db = new PrismaClient;
+
+async function getBalance() {
+    const session = await getServerSession(authOptions);
+    try {
+        const balance = await db.balance.findFirst({
+            where: {
+                userId: Number(session?.user?.id)
+            }
+        })
+
+        return {
+            amount: balance?.amount || 0,
+            locked: balance?.locked || 0
+        }
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+
+async function getOnRampTransactions() {
+      const session = await getServerSession(authOptions);
+      try{
+          const transactions = await db.onRampTransaction.findMany({
+            where:{
+                userId: Number(session?.user?.id)
+            }
+          })
+
+          return transactions.map(t => (
+                 {
+                    time: t.startTime,
+                    amount: t.amount,
+                    status: t.status,
+                    provider: t.provider
+                 }
+          ));
+      }catch(err){
+        console.log(err);
+      }
+}
+
+export default async function () {
     const balance = await getBalance();
     const transactions = await getOnRampTransactions();
 
