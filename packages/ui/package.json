@@ -4,6 +4,8 @@
   "type": "module",
   "private": true,
   "exports": {
+    "./textinput": "./src/textinput.tsx",
+    "./select": "./src/select.tsx",
     "./appbar": "./src/appbar.tsx",
     "./button": "./src/button.tsx",
     "./card": "./src/card.tsx",
