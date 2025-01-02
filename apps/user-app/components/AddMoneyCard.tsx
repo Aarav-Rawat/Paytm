@@ -14,6 +14,8 @@ const SUPPORTED_BANKS = [{
 
 export function AddMoney() {
     const [amount, setAmount] = useState(0);
+    const [provider, setProvider] = useState(SUPPORTED_BANKS[0]?.name);
+    const [redirectUrl, setRedirectUrl] = useState(SUPPORTED_BANKS[0]?.redirectUrl);
 
     return (
         <Card title="Add Money">
@@ -24,10 +26,19 @@ export function AddMoney() {
                     Bank
                 </div>
 
-           <Select options={SUPPORTED_BANKS.map(x => ({
-            key: x.name,
-            value: x.name
-        }))} />
+                <Select
+                  onSelect={(value)=>{
+                    setProvider(SUPPORTED_BANKS.find(x => x.name === value)?.name || ""  );
+                    setRedirectUrl(SUPPORTED_BANKS.find(x => x.name === value)?.redirectUrl || "")
+                  }}
+
+                 options={SUPPORTED_BANKS.map(x => ({
+                    key: x.name,
+                    value: x.name
+                }))} />
+
+          
+
             </div>
         </Card>
     )

@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client"
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../lib/auth";
+import { AddMoney } from "../../../components/AddMoneyCard";
 const db = new PrismaClient;
 
 async function getBalance() {
