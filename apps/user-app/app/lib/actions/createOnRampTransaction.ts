@@ -26,12 +26,7 @@ export async function createOnrampTransaction(provider: string, amount: number){
                
              }
         })
-            //  await db.user.update({
-            //     where:{
-            //         id: Number(session?.user?.id)
-            //     }
-            //  })
-
+           
             return {
                 message: "Done"
             }

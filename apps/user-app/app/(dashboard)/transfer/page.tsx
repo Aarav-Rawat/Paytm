@@ -27,25 +27,25 @@ async function getBalance() {
 }
 
 async function getOnRampTransactions() {
-      const session = await getServerSession(authOptions);
-      try{
-          const transactions = await db.onRampTransaction.findMany({
-            where:{
+    const session = await getServerSession(authOptions);
+    try {
+        const transactions = await db.onRampTransaction.findMany({
+            where: {
                 userId: Number(session?.user?.id)
             }
-          })
+        })
 
-          return transactions.map(t => (
-                 {
-                    time: t.startTime,
-                    amount: t.amount,
-                    status: t.status,
-                    provider: t.provider
-                 }
-          ));
-      }catch(err){
+        return transactions.map(t => (
+            {
+                time: t.startTime,
+                amount: t.amount,
+                status: t.status,
+                provider: t.provider
+            }
+        ));
+    } catch (err) {
         console.log(err);
-      }
+    }
 }
 
 export default async function () {
@@ -61,7 +61,7 @@ export default async function () {
                 <AddMoney />
             </div>
             <div>
-                <BalanceCard amount ={balance?.amount ?? 0} locked={balance?.locked ?? 0} />
+                <BalanceCard amount={balance?.amount ?? 0} locked={balance?.locked ?? 0} />
                 <div className="pt-4">
                     <OnRampTransactions transactions={transactions} />
                 </div>

@@ -10,7 +10,8 @@ app.post("/hdfcWebhook",async (req,res)=>{
         token: req.body.token
     }
 
-   await db.balance.update({ 
+try{
+    await db.balance.update({ 
     
         where:{
             userId: paymentInfo.userId
@@ -34,4 +35,12 @@ app.post("/hdfcWebhook",async (req,res)=>{
      res.status(200).json({
         message: "captured"
      })
+}
+catch(err){
+    console.log(err);
+    res.status(411).json({
+        message: "error while payment processing webhook"
+    })
+}
+  
 })
