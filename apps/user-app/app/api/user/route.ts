@@ -6,7 +6,7 @@ export const GET = async () => {
     const session = await getServerSession(authOptions);
     if (session) {
         return NextResponse.json({
-            user: session.user
+            user: session?.user
         })
     }
     return NextResponse.json({
