@@ -1,8 +1,10 @@
 "use client"
+import { Button } from "@repo/ui/button";
 import { Card } from "@repo/ui/card";
 import { Select } from "@repo/ui/select";
 import { TextInput } from "@repo/ui/textinput"
 import { useState } from "react"
+import { createOnRampTransaction } from "../app/lib/actions/createOnRampTransaction";
 
 const SUPPORTED_BANKS = [{
     name: "HDFC Bank",
@@ -27,17 +29,29 @@ export function AddMoney() {
                 </div>
 
                 <Select
-                  onSelect={(value)=>{
-                    setProvider(SUPPORTED_BANKS.find(x => x.name === value)?.name || ""  );
-                    setRedirectUrl(SUPPORTED_BANKS.find(x => x.name === value)?.redirectUrl || "")
-                  }}
+                    onSelect={(value) => {
+                        setProvider(SUPPORTED_BANKS.find(x => x.name === value)?.name || "");
+                        setRedirectUrl(SUPPORTED_BANKS.find(x => x.name === value)?.redirectUrl || "")
+                    }}
 
-                 options={SUPPORTED_BANKS.map(x => ({
-                    key: x.name,
-                    value: x.name
-                }))} />
+                    options={SUPPORTED_BANKS.map(x => ({
+                        key: x.name,
+                        value: x.name
+                    }))} />
 
-          
+                <div className="flex justify-center pt-4">
+                    <Button onClick={async () => {
+                        if(provider){
+                        await createOnRampTransaction(provider, amount)
+                        window.location.href = redirectUrl || "";}
+                        else{
+                            console.log("invalid provider")
+                        }
+                    }
+                    }>
+                        Add Money
+                    </Button>
+                </div>
 
             </div>
         </Card>
