@@ -3,6 +3,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../../lib/auth";
 import { AddMoney } from "../../../components/AddMoneyCard";
 import { BalanceCard } from "../../../components/BalanceCard";
+import { OnRampTransactions } from "../../../components/OnRampTransactions";
 const db = new PrismaClient;
 
 async function getBalance() {
