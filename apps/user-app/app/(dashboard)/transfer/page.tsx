@@ -2,6 +2,7 @@ import { PrismaClient } from "@prisma/client"
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../lib/auth";
 import { AddMoney } from "../../../components/AddMoneyCard";
+import { BalanceCard } from "../../../components/BalanceCard";
 const db = new PrismaClient;
 
 async function getBalance() {
@@ -58,7 +59,7 @@ export default async function () {
                 <AddMoney />
             </div>
             <div>
-                <BalanceCard amount={balance.amount} locked={balance.locked} />
+                <BalanceCard amount ={balance?.amount ?? 0} locked={balance?.locked ?? 0} />
                 <div className="pt-4">
                     <OnRampTransactions transactions={transactions} />
                 </div>
