@@ -9,6 +9,7 @@
     "./appbar": "./src/appbar.tsx",
     "./button": "./src/button.tsx",
     "./card": "./src/card.tsx",
+    "./center": "./src/center.tsx",
     "./code": "./src/code.tsx"
   },
   "scripts": {
