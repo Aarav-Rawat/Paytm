@@ -16,6 +16,7 @@ async function main() {
             locked: 0
         }
       },
+
       OnRampTransaction: {
         create: {
           startTime: new Date(),
@@ -24,6 +25,7 @@ async function main() {
           token: "token__1",
           provider: "HDFC Bank",
         },
+        
       },
     },
   })
