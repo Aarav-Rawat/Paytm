@@ -1,11 +1,11 @@
-import { PrismaClient } from "@prisma/client"
+import db from "@repo/db/client"
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../lib/auth";
 import { AddMoney } from "../../../components/AddMoneyCard";
 import { BalanceCard } from "../../../components/BalanceCard";
 import { OnRampTransactions } from "../../../components/OnRampTransactions";
 
-const db = new PrismaClient;
+
 
 async function getBalance() {
     const session = await getServerSession(authOptions);

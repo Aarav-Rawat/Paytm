@@ -1,8 +1,8 @@
 "use server"
-import { PrismaClient } from "@prisma/client";
+import db from "@repo/db/client"
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth";
-const db = new PrismaClient;
+
 
 export async function p2pTransfer(number: string, amount: number) {
 

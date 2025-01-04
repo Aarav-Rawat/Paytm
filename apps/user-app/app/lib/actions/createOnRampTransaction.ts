@@ -1,9 +1,9 @@
 "use server"
-import {PrismaClient} from "@prisma/client"
+import db from "@repo/db/client"
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth";
 import axios from 'axios';
-const db = new PrismaClient;
+
 
  
 export async function createOnrampTransaction(provider: string, amount: number){

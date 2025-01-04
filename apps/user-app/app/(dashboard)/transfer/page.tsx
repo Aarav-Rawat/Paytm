@@ -1,10 +1,10 @@
 import { getServerSession } from "next-auth";
 import { SendCard } from "../../../components/SendCard";
 import { authOptions } from "../../lib/auth";
-import { PrismaClient } from "@prisma/client"
+import db from "@repo/db/client"
 import Transactions from "../../../components/Transaction";
 
-const db = new PrismaClient;
+
 
 const getTrxn = async () => {
     const session = await getServerSession(authOptions);

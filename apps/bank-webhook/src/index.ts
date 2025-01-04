@@ -1,9 +1,8 @@
 import express from "express"
-import { PrismaClient } from "@prisma/client"
+import db from "@repo/db/client"
 import bodyParser  from "body-parser";
 import cors from 'cors';
 
-const db = new PrismaClient();
 const app = express();
 app.use(cors())
 app.use(bodyParser.json());
