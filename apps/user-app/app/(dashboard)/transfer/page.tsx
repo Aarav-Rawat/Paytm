@@ -15,16 +15,16 @@ const getTrxn = async () => {
         },
         include: {
             sentTransfers: true,
-            receivedTransfers: true,
+            // receivedTransfers: true,
         },
     })
 
-    const trxns = [
-        ...(bothTrxns?.receivedTransfers || []),
-         ...(bothTrxns?.sentTransfers || [])
-        ]
+    // const trxns = [
+    //     ...(bothTrxns?.receivedTransfers || []),
+    //      ...(bothTrxns?.sentTransfers || [])
+    //     ]
 
-    return trxns;
+    return bothTrxns?.sentTransfers || [];
 }
 
 export default async function () {
