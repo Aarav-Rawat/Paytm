@@ -10,12 +10,12 @@ export function SendCard() {
     const [number, setNumber] = useState("");
     const [amount, setAmount] = useState("");
 
-    return <div className="h-[90vh]">
-         <div className="text-4xl text-[#6a51a6] mb-[-30px] font-bold">
+    return <div className="h-[90vh] ml-32">
+         <div className="text-4xl text-[#6a51a6] mb-[-50px] font-bold">
            Transfer
         </div>
         <Center>
-            <Card title="Send">
+            <Card title="Send ">
                 <div className="min-w-72 pt-2">
                     <TextInput placeholder={"Number"} label="Number" onChange={(value) => {
                         setNumber(value)
