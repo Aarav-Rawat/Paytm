@@ -5,11 +5,10 @@ import { authOptions } from "./lib/auth";
 
 export default async function Page() {
   const session = await getServerSession(authOptions);
-  
-      {/* <Appbar onSignIn={signIn} onSignOut={signOut} user={session.data?.user}/> */}
+
      
       if(session?.user){
-        redirect("/dashboard")
+        redirect("/wallet")
       }
       else{
       redirect("/api/auth/signin")
