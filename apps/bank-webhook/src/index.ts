@@ -1,8 +1,12 @@
 import express from "express"
 import { PrismaClient } from "@prisma/client"
+import bodyParser  from "body-parser";
+import cors from 'cors';
+
 const db = new PrismaClient();
 const app = express();
-
+app.use(cors())
+app.use(bodyParser.json());
 app.use(express.json())
 
 app.post("/hdfcWebhook", async (req, res) => {
@@ -48,7 +52,7 @@ app.post("/hdfcWebhook", async (req, res) => {
                 })
             ]);
 
-            res.json({
+            res.status(200).json({
                 message: "Captured"
             })
         

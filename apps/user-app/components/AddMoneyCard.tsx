@@ -43,6 +43,7 @@ export function AddMoney() {
                     <Button onClick={async () => {
                         
                         await createOnrampTransaction(provider, amount)
+                        window.location.href = redirectUrl || "";
                         
                         
                     }

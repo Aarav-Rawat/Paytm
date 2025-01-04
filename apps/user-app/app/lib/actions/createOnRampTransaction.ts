@@ -2,9 +2,10 @@
 import {PrismaClient} from "@prisma/client"
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth";
+import axios from 'axios';
 const db = new PrismaClient;
 
-
+ 
 export async function createOnrampTransaction(provider: string, amount: number){
     
     try{
@@ -26,10 +27,22 @@ export async function createOnrampTransaction(provider: string, amount: number){
                
              }
         })
+
+        const bankResponse = await axios.post(`${process.env.WEBHOOK_URL}/hdfcWebhook`,{
+            token,
+            amount: amount*100,
+            userId: session?.user?.id
+        })
            
+        if(bankResponse.data.message === "Captured"){
             return {
                 message: "Done"
             }
+        }
+
+        return{
+            message: "err from bank"
+        }
     }
     catch(err){
         console.log(err);
