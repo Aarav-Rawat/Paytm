@@ -28,7 +28,7 @@ export async function createOnrampTransaction(provider: string, amount: number){
              }
         })
 
-        const bankResponse = await axios.post(`${process.env.WEBHOOK_URL}/hdfcWebhook`,{
+        const bankResponse = await axios.post("http://localhost:3001/hdfcWebhook",{
             token,
             amount: amount*100,
             userId: session?.user?.id
