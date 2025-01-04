@@ -12,6 +12,7 @@ app.use(express.json())
 app.post("/hdfcWebhook", async (req, res) => {
 
     try {
+        console.log(req.body)
         const paymentInformation: {
             token: string;
             userId: string;
