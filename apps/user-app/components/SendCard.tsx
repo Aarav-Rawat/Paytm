@@ -11,6 +11,9 @@ export function SendCard() {
     const [amount, setAmount] = useState("");
 
     return <div className="h-[90vh]">
+         <div className="text-4xl text-[#6a51a6] mb-[-30px] font-bold">
+           Transfer
+        </div>
         <Center>
             <Card title="Send">
                 <div className="min-w-72 pt-2">
