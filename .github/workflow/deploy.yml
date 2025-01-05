@@ -22,7 +22,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         context: .
-        file: ./docker/Dockerfile.user
+        file: ./docker/Dockerfile.user-app
         push: true
         tags: aaravrawat5/asspay:latest  # Replace with your Docker Hub username and repository
 
