@@ -10,23 +10,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Check Out Repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Log in to Docker Hub
-      uses: docker/login-action@v1
+      uses: docker/login-action@v3
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build and Push Docker image
-      uses: docker/build-push-action@v2
+      uses: docker/build-push-action@v6
       with:
         context: .
         file: ./docker/Dockerfile.user-app
         push: true
-        tags: aaravrawat5/asspay:latest  # Replace with your Docker Hub username and repository
+        tags: aaravrawat5/asspay:latest  
 
     - name: Verify Pushed Image
-      run: docker pull aaravrawat5/asspay:latest  # Replace with your Docker Hub username and repository
+      run: docker pull aaravrawat5/asspay:latest  
 
    
